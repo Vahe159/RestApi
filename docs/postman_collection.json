@@ -1,0 +1,66 @@
+{
+  "info": {
+    "name": "Myasofaktura API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Accept", "value": "application/json"},
+          {"key": "Content-Type", "value": "application/json"}
+        ],
+        "url": {"raw": "{{base_url}}/api/register", "host": ["{{base_url}}"], "path": ["api", "register"]},
+        "body": {"mode": "raw", "raw": "{\n  \"phone\": \"79999999999\",\n  \"name\": \"Test User\",\n  \"address\": \"Test Address\",\n  \"password\": \"secret123\"\n}"}
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Accept", "value": "application/json"},
+          {"key": "Content-Type", "value": "application/json"}
+        ],
+        "url": {"raw": "{{base_url}}/api/login", "host": ["{{base_url}}"], "path": ["api", "login"]},
+        "body": {"mode": "raw", "raw": "{\n  \"phone\": \"79999999999\",\n  \"password\": \"secret123\"\n}"}
+      }
+    },
+    {
+      "name": "Get Products",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "Accept", "value": "application/json"}
+        ],
+        "url": {"raw": "{{base_url}}/api/products", "host": ["{{base_url}}"], "path": ["api", "products"]}
+      }
+    },
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Accept", "value": "application/json"},
+          {"key": "Content-Type", "value": "application/json"},
+          {"key": "Authorization", "value": "Basic {{basic_token}}"}
+        ],
+        "url": {"raw": "{{base_url}}/api/orders", "host": ["{{base_url}}"], "path": ["api", "orders"]},
+        "body": {"mode": "raw", "raw": "{\n  \"user_id\": 1,\n  \"items\": [{\n    \"product_id\": 1,\n    \"quantity\": 2\n  }],\n  \"comment\": \"Test order\"\n}"}
+      }
+    },
+    {
+      "name": "Get Orders",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "Accept", "value": "application/json"},
+          {"key": "Authorization", "value": "Basic {{basic_token}}"}
+        ],
+        "url": {"raw": "{{base_url}}/api/orders?user_id=1", "host": ["{{base_url}}"], "path": ["api", "orders"], "query": [{"key": "user_id", "value": "1"}]}
+      }
+    }
+  ]
+}
